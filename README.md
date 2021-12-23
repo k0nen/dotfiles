@@ -3,6 +3,7 @@
 ## tmux
 - Default shell to `/bin/zsh`
 - Current command is shown on the bottom of each pane
+- Mouse control
 
 ## zsh
 - Alias `hist` for `history`

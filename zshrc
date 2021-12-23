@@ -122,3 +122,6 @@ function precmd() {
     fi
 }
 
+# thefuck library
+eval $(thefuck --alias shit)
+

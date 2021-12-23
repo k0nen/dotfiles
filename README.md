@@ -9,3 +9,5 @@
   - Set timezone to Asia/Seoul
   - tmux window/pane doesn't share history
 - Blank line after every command
+- [The Fuck](https://github.com/nvbn/thefuck)
+

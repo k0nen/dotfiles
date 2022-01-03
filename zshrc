@@ -125,3 +125,6 @@ function precmd() {
 # thefuck library
 eval $(thefuck --alias shit)
 
+# Customize prompt: based on "simple" theme
+export PROMPT="[%m] %(!.%{$fg[red]%}.%{$fg[green]%})%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} "
+

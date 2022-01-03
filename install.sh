@@ -6,3 +6,5 @@ ZSH=$HOME/.oh-my-zsh
 ln -sf $DOT_DIR/tmux.conf $HOME/.tmux.conf
 ln -sf $DOT_DIR/zshrc $HOME/.zshrc
 
+pip3 install thefuck --user
+

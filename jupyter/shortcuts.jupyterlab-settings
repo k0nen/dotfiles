@@ -1,0 +1,21 @@
+{
+    "shortcuts": [
+        {
+            "command": "notebook:restart-run-all",
+            "keys": [
+                "0",
+                "1"
+            ],
+            "selector": "[data-jp-kernel-user]:focus"
+        },
+        {
+            "command": "notebook:restart-and-run-to-selected",
+            "keys": [
+                "0",
+                "2"
+            ],
+            "selector": "[data-jp-kernel-user]:focus"
+        }
+    ]
+}
+

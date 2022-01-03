@@ -11,3 +11,5 @@ ln -sf $DOT_DIR/zshrc $HOME/.zshrc
 
 pip3 install thefuck --user
 
+cp jupyter/shortcuts.jupyterlab-setting ~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-setting
+

@@ -12,3 +12,7 @@
 - Blank line after every command
 - [The Fuck](https://github.com/nvbn/thefuck)
 
+## jupyterlab
+- `01` Notebook: Restart and run all
+- `02` Notebook: Restart and run to selected cell
+

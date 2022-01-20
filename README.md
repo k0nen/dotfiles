@@ -1,5 +1,10 @@
 # dotfiles
 
+## Docker setup
+- Copy or pull this repository inside docker
+- Run `install.sh`
+- `source ~/.zshrc`
+
 ## tmux
 - Default shell to `/bin/zsh`
 - Current command is shown on the bottom of each pane

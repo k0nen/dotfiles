@@ -3,3 +3,6 @@
     cm = commit -m
     br = checkout -b
  
+[pager]
+    log = false
+

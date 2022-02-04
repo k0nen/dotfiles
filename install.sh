@@ -12,7 +12,7 @@ ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
 
 pip3 install thefuck --user
 
-cp $DOT_DIR/oh-my-zsh/simple.zsh-theme $ZSH/themes/simple.zsh-theme
+cp $DOT_DIR/oh-my-zsh/simple_k0nen.zsh-theme $ZSH/themes/simple_k0nen.zsh-theme
 mkdir -p ~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension
 cp $DOT_DIR/jupyter/shortcuts.jupyterlab-settings ~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
 

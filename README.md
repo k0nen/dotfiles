@@ -5,6 +5,11 @@
 - Run `install.sh`
 - `source ~/.zshrc`
 
+## git
+- `log1 = log --oneline`
+- `cm = commit -m`
+- `br = checkout -b`
+
 ## tmux
 - Default shell to `/bin/zsh`
 - Current command is shown on the bottom of each pane

@@ -1,0 +1,5 @@
+[alias]
+    log1 = log --oneline
+    cm = commit -m
+    br = checkout -b
+ 

@@ -102,6 +102,11 @@ source $ZSH/oh-my-zsh.sh
 
 # PERSONAL OPTIONS
 
+# Basic alias
+alias vi="vim"
+alias python="python3"
+alias pip="pip3"
+
 # Show history
 alias hist="history"
 
@@ -123,6 +128,7 @@ function precmd() {
 }
 
 # thefuck library
+export PATH="`python3 -m site --user-base`/bin:$PATH"
 eval $(thefuck --alias shit)
 
 # CUDA_VISIBLE_DEVICES aliases
@@ -139,6 +145,12 @@ alias CVD5='CUDA_VISIBLE_DEVICES=5'
 alias CVD6='CUDA_VISIBLE_DEVICES=6'
 alias CVD7='CUDA_VISIBLE_DEVICES=7'
 
+# Simple username
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

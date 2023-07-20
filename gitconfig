@@ -7,3 +7,6 @@
     log = false
     branch = false
 
+[user]
+	name = konen
+	email = konen@theori.io

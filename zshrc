@@ -157,6 +157,8 @@ export VENV_DIR="/Users/konen/Documents/dev_utils/venv"
 venv() {
     if [ $# -eq 0 ]; then
         echo "Usage: venv [env_name]"
+    elif [ "$1" = "ls" ]; then
+        ls $VENV_DIR
     else
         local name="$1"
         if [ -d "$VENV_DIR/$1" ]; then

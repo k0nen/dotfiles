@@ -152,6 +152,21 @@ prompt_context() {
   fi
 }
 
+# Simple venv command
+export VENV_DIR="/Users/konen/Documents/dev_utils/venv"
+venv() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: venv [env_name]"
+    else
+        local name="$1"
+        if [ -d "$VENV_DIR/$1" ]; then
+            source $VENV_DIR/$1/bin/activate
+        else
+            echo "venv name $1 does not exist."
+        fi
+    fi
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

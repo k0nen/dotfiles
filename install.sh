@@ -11,4 +11,5 @@ ln -sf $DOT_DIR/zshrc $HOME/.zshrc
 ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
 
 pip3 install thefuck --user
+cp config/thefuck/rules/* $HOME/.config/thefuck/rules/
 

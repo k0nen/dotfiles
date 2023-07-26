@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 
 # PERSONAL OPTIONS
 
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin"
+
 # Basic alias
 alias vi="vim"
 alias python="python3"
@@ -167,6 +169,15 @@ venv() {
             echo "venv name $1 does not exist."
         fi
     fi
+}
+
+# Simple walltime command
+walltime() {
+    if [ -z "$1" ]; then
+        echo "Usage: walltime [PID]"
+        return 1
+    fi
+    ps -p $1 -o etime
 }
 
 # >>> conda initialize >>>

@@ -102,7 +102,10 @@ source $ZSH/oh-my-zsh.sh
 
 # PERSONAL OPTIONS
 
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin"
+# (Only MacOS) Python library
+if [[ $(uname) == "Darwin" ]]; then
+	export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.11/bin"
+fi
 
 # Basic alias
 alias vi="vim"

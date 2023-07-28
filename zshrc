@@ -183,6 +183,11 @@ walltime() {
     ps -p $1 -o etime
 }
 
+# Grip: Simple local renderer for markdown files
+function mdview() {
+    grip --quiet "$@"
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

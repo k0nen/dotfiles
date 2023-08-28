@@ -8,6 +8,7 @@ chsh -s /bin/zsh
 
 ln -sf $DOT_DIR/tmux.conf $HOME/.tmux.conf
 ln -sf $DOT_DIR/zshrc $HOME/.zshrc
+ln -sf $DOT_DIR/zsh_env $HOME/.zsh_env
 ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
 
 pip3 install thefuck --user

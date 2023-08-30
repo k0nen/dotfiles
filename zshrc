@@ -124,6 +124,9 @@ export TZ="UTC-9"
 # Don't share command history across tmux windows/panes
 setopt nosharehistory
 
+# shell-gpt
+alias gpt4="sgpt"
+
 # https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
 function precmd() {
     # Print a newline before the prompt, unless it's the

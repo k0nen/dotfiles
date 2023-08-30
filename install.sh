@@ -15,4 +15,4 @@ pip3 install thefuck --user
 cp config/thefuck/rules/* $HOME/.config/thefuck/rules/
 
 pip3 install grip --user
-
+pip3 install shell-gpt

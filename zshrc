@@ -1,0 +1,47 @@
+
+# Personal alias
+alias vi="vim"
+alias python="python3"
+alias pip="pip3"
+
+alias hist="history" show history
+
+# Set timezone
+export TZ="UTC-9"
+
+# Don't share command history across tmux windows/panes
+setopt nosharehistory
+
+# https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
+function precmd() {
+    # Print a newline before the prompt, unless it's the
+    # first prompt in the process.
+    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+        echo ""
+    fi
+}
+
+# Simple username
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+# CUDA_VISIBLE_DEVICES aliases
+alias CVD01='CUDA_VISIBLE_DEVICES=0,1'
+alias CVD23='CUDA_VISIBLE_DEVICES=2,3'
+alias CVD45='CUDA_VISIBLE_DEVICES=4,5'
+alias CVD67='CUDA_VISIBLE_DEVICES=6,7'
+alias CVD0='CUDA_VISIBLE_DEVICES=0'
+alias CVD1='CUDA_VISIBLE_DEVICES=1'
+alias CVD2='CUDA_VISIBLE_DEVICES=2'
+alias CVD3='CUDA_VISIBLE_DEVICES=3'
+alias CVD4='CUDA_VISIBLE_DEVICES=4'
+alias CVD5='CUDA_VISIBLE_DEVICES=5'
+alias CVD6='CUDA_VISIBLE_DEVICES=6'
+alias CVD7='CUDA_VISIBLE_DEVICES=7'
+
+

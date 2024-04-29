@@ -1,6 +1,28 @@
 # dotfiles
 
 ## How to setup
+- Copy or pull this repo inside new system
+- `bash install.sh`
+- `source ~/.zshrc`
+
+## zsh
+- Alias `hist` for `history`
+- Set timezone to Asia/Seoul
+- tmux window/panes don't share history
+- Blank line after every command
+- Simplified username
+
+## TODOs
+- install thefuck
+    - alias
+    - fix custom command warnings
+- vi default tabs to 4
+- git commands
+- tmux
+
+# Old readme below
+
+## How to setup
 - Copy or pull this repository inside docker
 - Run `install.sh`
 - `source ~/.zshrc`

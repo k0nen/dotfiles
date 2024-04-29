@@ -17,15 +17,17 @@ os_name="$(uname -s)"  # Get the OS name
 if [[ "$os_name" == "Darwin" ]]; then
     # macOS specific commands
     echo "Running on macOS"
-    sed -i '' 's/robyrussell/agnoster/' ./zshrc
+    sed -i '' 's/robbyrussell/agnoster/' ~/.zshrc
 elif [[ "$os_name" == "Linux" ]]; then
     # Linux specific commands
     echo "Running on Linux"
-    sed -i 's/robyrussell/agnoster/' ./zshrc
+    sed -i 's/robbyrussell/agnoster/' ~/.zshrc
 else
     echo "Unsupported OS"
 fi
 
 # Append custom zshrc
-printf "\n\nsource $PWD/zshrc\n\n" > ~/.zshrc
+if ! grep -q "source $PWD/zshrc" ~/.zshrc; then
+    printf "\n\nsource $PWD/zshrc\n\n" >> ~/.zshrc
+fi
 

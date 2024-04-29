@@ -4,8 +4,28 @@
 DOT_DIR=$PWD
 ZSH=$HOME/.oh-my-zsh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /bin/zsh
+# Check default shell
+default_shell=$SHELL
+if [[ "default_shell" == "/bin/bash" ]]; then
+    # Set zsh to default
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    chsh -s /bin/zsh
+fi
 
+# Change zsh theme
+os_name="$(uname -s)"  # Get the OS name
+if [[ "$os_name" == "Darwin" ]]; then
+    # macOS specific commands
+    echo "Running on macOS"
+    sed -i '' 's/robyrussell/agnoster/' ./zshrc
+elif [[ "$os_name" == "Linux" ]]; then
+    # Linux specific commands
+    echo "Running on Linux"
+    sed -i 's/robyrussell/agnoster/' ./zshrc
+else
+    echo "Unsupported OS"
+fi
+
+# Append custom zshrc
 printf "\n\nsource $PWD/zshrc\n\n" > ~/.zshrc
 

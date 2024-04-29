@@ -31,3 +31,6 @@ if ! grep -q "source $PWD/zshrc" ~/.zshrc; then
     printf "\n\nsource $PWD/zshrc\n\n" >> ~/.zshrc
 fi
 
+# Custom config files
+ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
+

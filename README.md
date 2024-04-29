@@ -12,12 +12,16 @@
 - Blank line after every command
 - Simplified username
 
+## git
+- `log1 10` shows 10 recent commits
+- `cm = commit -m`
+- `br = checkout -b`
+
 ## TODOs
 - install thefuck
     - alias
     - fix custom command warnings
 - vi default tabs to 4
-- git commands
 - tmux
 
 # Old readme below

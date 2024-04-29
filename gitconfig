@@ -1,3 +1,9 @@
 [alias]
     log1 = "!f() { git log --oneline | head -n ${1-10}; }; f"
+    cm = commit -m
+    br = checkout -b
+ 
+[pager]
+    log = false
+    branch = false
 

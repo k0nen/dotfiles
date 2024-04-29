@@ -4,7 +4,8 @@ alias vi="vim"
 alias python="python3"
 alias pip="pip3"
 
-alias hist="history" show history
+alias hist="history" # show history
+alias gpt="sgpt" # shell-gpt
 
 # Set timezone
 export TZ="UTC-9"
@@ -28,6 +29,15 @@ prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
+}
+
+# Simple walltime command
+walltime() {
+    if [ -z "$1" ]; then
+        echo "Usage: walltime [PID]"
+        return 1
+    fi
+    ps -p $1 -o etime
 }
 
 # CUDA_VISIBLE_DEVICES aliases

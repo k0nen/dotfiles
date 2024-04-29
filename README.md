@@ -11,6 +11,7 @@
 - tmux window/panes don't share history
 - Blank line after every command
 - Simplified username
+- `walltime [PID]` command
 
 ## git
 - `log1 10` shows 10 recent commits

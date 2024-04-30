@@ -34,3 +34,19 @@ fi
 # Custom config files
 ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
 
+# Python custom libraries
+# Function to check if a Python package is installed
+check_and_install_package() {
+  package=$1
+  if ! pip show $package > /dev/null 2>&1; then
+    echo "$package is not installed. Installing..."
+    pip install $package
+  else
+    echo "$package is already installed."
+  fi
+}
+
+# Example usage:
+check_and_install_package "shell_gpt"
+check_and_install_package "thefuck"
+

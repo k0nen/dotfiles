@@ -5,7 +5,7 @@ alias python="python3"
 alias pip="pip3"
 
 alias hist="history" # show history
-alias gpt="sgpt" # shell-gpt
+alias gpt="sgpt -s" # shell-gpt
 
 # Set timezone
 export TZ="UTC-9"

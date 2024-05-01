@@ -40,7 +40,7 @@ check_and_install_package() {
   package=$1
   if ! pip show $package > /dev/null 2>&1; then
     echo "$package is not installed. Installing..."
-    pip install $package
+    python3 -m pip install $package
   else
     echo "$package is already installed."
   fi

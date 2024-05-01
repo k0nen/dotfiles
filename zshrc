@@ -6,6 +6,7 @@ alias pip="pip3"
 
 alias hist="history" # show history
 alias gpt="sgpt -s" # shell-gpt
+alias shit="fuck" # thefuck
 
 # Set timezone
 export TZ="UTC-9"

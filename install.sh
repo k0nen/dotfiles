@@ -50,3 +50,5 @@ check_and_install_package() {
 check_and_install_package "shell_gpt"
 check_and_install_package "thefuck"
 
+mkdir -p $HOME/.config/thefuck/rules
+cp config/thefuck/rules/* $HOME/.config/thefuck/rules/

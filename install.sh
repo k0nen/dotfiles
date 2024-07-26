@@ -18,10 +18,12 @@ if [[ "$os_name" == "Darwin" ]]; then
     # macOS specific commands
     echo "Running on macOS"
     sed -i '' 's/robbyrussell/agnoster/' ~/.zshrc
+    brew install tmux
 elif [[ "$os_name" == "Linux" ]]; then
     # Linux specific commands
     echo "Running on Linux"
     sed -i 's/robbyrussell/agnoster/' ~/.zshrc
+    sudo apt-get install tmux
 else
     echo "Unsupported OS"
 fi
@@ -33,6 +35,7 @@ fi
 
 # Custom config files
 ln -sf $DOT_DIR/gitconfig $HOME/.gitconfig
+ln -sf $DOT_DIR/tmux.conf $HOME/.tmux.conf
 
 # Python custom libraries
 # Function to check if a Python package is installed

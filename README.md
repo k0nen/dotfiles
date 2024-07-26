@@ -12,6 +12,7 @@
 - Blank line after every command
 - Simplified username
 - `walltime [PID]` command
+- [The Fuck](https://github.com/nvbn/thefuck)
 
 ## git
 - `log1 10` shows 10 recent commits
@@ -19,9 +20,6 @@
 - `br = checkout -b`
 
 ## TODOs
-- install thefuck
-    - alias
-    - fix custom command warnings
 - vi default tabs to 4
 - tmux
 

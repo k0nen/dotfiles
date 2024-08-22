@@ -2,6 +2,7 @@
     log1 = "!f() { git log --oneline | head -n ${1-10}; }; f"
     cm = commit -m
     br = checkout -b
+    append = commit --amend --no-edit
  
 [pager]
     log = false

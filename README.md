@@ -18,6 +18,7 @@
 - `log1 10` shows 10 recent commits
 - `cm = commit -m`
 - `br = checkout -b`
+- `append = commit --amend --no-edit`
 
 ## tmux
 - Default shell to `/bin/zsh`

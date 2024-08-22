@@ -13,6 +13,7 @@
 - Simplified username
 - `walltime [PID]` command
 - [The Fuck](https://github.com/nvbn/thefuck)
+- `pythondebug = python3 -m pdb -c continue`
 
 ## git
 - `log1 10` shows 10 recent commits

@@ -2,6 +2,7 @@
 # Personal alias
 alias vi="vim"
 alias python="python3"
+alias pythondebug="python3 -m pdb -c continue"
 alias pip="pip3"
 
 alias hist="history" # show history

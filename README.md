@@ -15,6 +15,7 @@
 - [The Fuck](https://github.com/nvbn/thefuck)
 - `pythondebug = python3 -m pdb -c continue`
 - `clipboard = tee >(pbcopy)` (Works on Mac only, but anyway)
+- `pwnvm` will copy current directory to vm, save path in clipboard
 
 ## git
 - `log1 10` shows 10 recent commits

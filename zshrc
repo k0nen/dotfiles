@@ -57,4 +57,15 @@ alias CVD5='CUDA_VISIBLE_DEVICES=5'
 alias CVD6='CUDA_VISIBLE_DEVICES=6'
 alias CVD7='CUDA_VISIBLE_DEVICES=7'
 
+# pwnvm related command
+
+pwnvm() {
+  local tmpdir="pwn_$(date +%Y%m%d_%H%M%S)"  # Create a unique temporary directory name
+  local remote_dir="~/ctf/$tmpdir"            # Remote directory path
+
+  # Step 1: Copy current directory to remote
+  scp -r "$(pwd)" k0nen@pwnvm:"$remote_dir"
+
+  echo $remote_dir | clipboard
+}
 

@@ -16,7 +16,7 @@
 - `pythondebug = python3 -m pdb -c continue`
 - `clipboard = tee >(pbcopy)` (Works on Mac only, but anyway)
 - `pwnvm` commands
-  - `pwnvm copy` will copy current directory to vm, and save path in clipboard
+  - `pwnvm copy [path]` will copy path to vm, and save path in clipboard
   - `pwnvm shell` will open a ssh connection to the vm
 
 ## git

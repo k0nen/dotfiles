@@ -64,10 +64,12 @@ pwnvm() {
     local tmpdir="pwn_$(date +%Y%m%d_%H%M%S)"  # Create a unique temporary directory name
     local remote_dir="~/ctf/$tmpdir"            # Remote directory path
 
-    # Step 1: Copy current directory to remote
-    scp -r "$(pwd)" k0nen@pwnvm:"$remote_dir"
-
-    echo $remote_dir | clipboard
+    if [[ -n $2 ]]; then
+      scp -r $2 k0nen@pwnvm:"$remote_dir"
+      echo $remote_dir | clipboard
+    else
+      echo "Usage: pwnvm copy [path]"
+    fi
   elif [[ $1 == "shell" ]]; then
     ssh pwnvm
   else
@@ -77,7 +79,7 @@ pwnvm() {
 
 if [[ $(hostname) == "pwnvm" ]]; then
   pwnhost() {
-    socat TCP-LISTEN:9999,reuseaddr,fork EXEC:$1,stderr
+    socat TCP-LISTEN:9999,bind=192.168.64.2,reuseaddr,fork EXEC:$1,stderr
   }
 fi
 

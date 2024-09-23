@@ -75,3 +75,9 @@ pwnvm() {
   fi
 }
 
+if [[ $(hostname) == "pwnvm" ]]; then
+  pwnhost() {
+    socat TCP-LISTEN:9999,reuseaddr,fork EXEC:$1,stderr
+  }
+fi
+

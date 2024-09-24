@@ -77,6 +77,50 @@ pwnvm() {
   fi
 }
 
+pwnconvert() {
+  # Set the output variable to $2 if it exists, otherwise default to "result"
+  local output_var="${2:-result}"
+  # Set the input variable to $3 if it exists, otherwise default to "s"
+  local input_var="${3:-s}"
+
+  if [[ $1 == "char2char" ]]; then
+    echo "$output_var = $input_var" | clipboard
+  elif [[ $1 == "char2hex" ]]; then
+    echo "$output_var = $input_var.hex().encode()" | clipboard
+  elif [[ $1 == "char2dec" ]]; then
+    echo "$output_var = str($input_var[0]).encode()" | clipboard
+  elif [[ $1 == "char2int" ]]; then
+    echo "$output_var = $input_var[0]" | clipboard
+  elif [[ $1 == "hex2char" ]]; then
+    echo "$output_var = bytes.fromhex($input_var.decode())" | clipboard
+  elif [[ $1 == "hex2hex" ]]; then
+    echo "$output_var = $input_var" | clipboard
+  elif [[ $1 == "hex2dec" ]]; then
+    echo "$output_var = str(int($input_var.decode(), 16)).encode()" | clipboard
+  elif [[ $1 == "hex2int" ]]; then
+    echo "$output_var = int($input_var.decode(), 16)" | clipboard
+  elif [[ $1 == "dec2char" ]]; then
+    echo "$output_var = int($input_var.decode()).to_bytes(1, 'big')" | clipboard
+  elif [[ $1 == "dec2hex" ]]; then
+    echo "$output_var = hex(int($input_var.decode()))[2:].encode()" | clipboard
+  elif [[ $1 == "dec2dec" ]]; then
+    echo "$output_var = $input_var" | clipboard
+  elif [[ $1 == "dec2int" ]]; then
+    echo "$output_var = int($input_var.decode())" | clipboard
+  elif [[ $1 == "int2char" ]]; then
+    echo "$output_var = $input_var.to_bytes(1, 'big')" | clipboard
+  elif [[ $1 == "int2hex" ]]; then
+    echo "$output_var = hex($input_var)[2:].encode()" | clipboard
+  elif [[ $1 == "int2dec" ]]; then
+    echo "$output_var = str($input_var).encode()" | clipboard
+  elif [[ $1 == "int2int" ]]; then
+    echo "$output_var = $input_var" | clipboard
+  else
+    echo "Usage: pwnconvert [char|hex|dec|int]2[char|hex|dec|int] optional_out_var optional_in_var"
+  fi
+}
+
+
 if [[ $(hostname) == "pwnvm" ]]; then
   pwnhost() {
     socat TCP-LISTEN:9999,bind=192.168.64.2,reuseaddr,fork EXEC:$1,stderr

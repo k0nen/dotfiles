@@ -13,6 +13,9 @@ alias shit="fuck" # thefuck
 # Set timezone
 export TZ="UTC-9"
 
+# PATH
+export PATH=$HOME/.local/bin:$PATH
+
 # Don't share command history across tmux windows/panes
 setopt nosharehistory
 

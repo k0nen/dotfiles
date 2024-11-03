@@ -60,8 +60,24 @@ alias CVD5='CUDA_VISIBLE_DEVICES=5'
 alias CVD6='CUDA_VISIBLE_DEVICES=6'
 alias CVD7='CUDA_VISIBLE_DEVICES=7'
 
-# pwnvm related command
+# boj commands
+boj() {
+  if [[ "$1" == "run" && "$2" =~ ^[0-9]+$ ]]; then
+    g++ -std=c++17 "$2.cpp" -o a.out
+    if [[ $? -eq 0 ]]; then
+      echo "Compile OK"
+      ./a.out
+    fi
+  elif [[ "$1" == "create" && "$2" =~ ^[0-9]+$ ]]; then
+    cp template.cpp "$2.cpp"
+    echo "Created $2.cpp"
+  else
+    echo "Usage: boj [run|create] <integer>"
+  fi
+}
 
+
+# pwnvm related command
 pwnvm() {
   if [[ $1 == "copy" ]]; then
     local tmpdir="pwn_$(date +%Y%m%d_%H%M%S)"  # Create a unique temporary directory name

@@ -15,6 +15,9 @@
 - [The Fuck](https://github.com/nvbn/thefuck)
 - `pythondebug = python3 -m pdb -c continue`
 - `clipboard = tee >(pbcopy)` (Works on Mac only, but anyway)
+- `boj` commands
+  - `boj run [id]` will compile and run `[id].cpp`
+  - `boj create [id]` will copy `template.cpp` into `[id].cpp`
 - `pwnvm` commands
   - `pwnvm copy [path]` will copy path to vm, and save path in clipboard
   - `pwnvm shell` will open a ssh connection to the vm

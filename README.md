@@ -13,6 +13,8 @@
 - Simplified username
 - `walltime [PID]` command
 - [The Fuck](https://github.com/nvbn/thefuck)
+- [shell_gpt](https://github.com/TheR1D/shell_gpt)
+  - Update permission after entering OpenAI API key: `chmod 600 `/.config/shell_gpt/.sgptrc`
 - `pythondebug = python3 -m pdb -c continue`
 - `clipboard = tee >(pbcopy)` (Works on Mac only, but anyway)
 - `boj` commands

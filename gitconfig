@@ -3,7 +3,7 @@
     cm = commit -m
     br = checkout -b
     append = commit --amend --no-edit
-    scs = "!f() { git stash && git checkout \"$1\" && git stash pop }; f"
+    scs = "!f() { git stash && git checkout \"$1\" && git stash pop; }; f"
  
 [pager]
     log = false

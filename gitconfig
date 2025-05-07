@@ -9,3 +9,6 @@
     log = false
     branch = false
 
+[rerere]
+    enabled = true
+

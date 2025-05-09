@@ -9,6 +9,7 @@ alias clipboard="tee >(pbcopy)"
 alias hist="history" # show history
 alias gpt="sgpt -s" # shell-gpt
 alias shit="fuck" # thefuck
+alias llt="ll -t"
 
 # Set timezone
 export TZ="UTC-9"

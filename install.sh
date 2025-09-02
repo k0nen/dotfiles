@@ -19,11 +19,12 @@ if [[ "$os_name" == "Darwin" ]]; then
     echo "Running on macOS"
     sed -i '' 's/robbyrussell/agnoster/' ~/.zshrc
     brew install tmux
+    brew install fzf
 elif [[ "$os_name" == "Linux" ]]; then
     # Linux specific commands
     echo "Running on Linux"
     sed -i 's/robbyrussell/agnoster/' ~/.zshrc
-    sudo apt-get install tmux
+    sudo apt-get install tmux fzf
 else
     echo "Unsupported OS"
 fi

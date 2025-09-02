@@ -144,3 +144,6 @@ if [[ $(hostname) == "pwnvm" ]]; then
   }
 fi
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+

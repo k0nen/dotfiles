@@ -1,50 +1,59 @@
+# Interactive shell configuration.
 
-# Personal alias
+export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
+
+ZSH_THEME="agnoster"
+AGNOSTER_DIR_FG=white
+AGNOSTER_DIR_BG=blue
+
+plugins=(git)
+
+if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
+  source "$ZSH/oh-my-zsh.sh"
+else
+  print -u2 "warning: Oh My Zsh is not installed at $ZSH"
+fi
+
+# Personal aliases
 alias vi="vim"
 alias python="python3"
 alias pythondebug="python3 -m pdb -c continue"
 alias pip="pip3"
 alias clipboard="tee >(pbcopy)"
+alias z="fzf"
 
-alias hist="history" # show history
-alias gpt="sgpt -s" # shell-gpt
-alias shit="fuck" # thefuck
+alias hist="history"
+alias gpt="sgpt -s"
+alias shit="fuck"
 alias llt="ll -t"
 
-# Set timezone
-export TZ="UTC-9"
-
-# PATH
-export PATH=$HOME/.local/bin:$PATH
-
-# Don't share command history across tmux windows/panes
+# Keep tmux panes from sharing commands before they are closed.
 setopt nosharehistory
 
-# https://stackoverflow.com/questions/20512957/zsh-new-line-prompt-after-each-command
-function precmd() {
-    # Print a newline before the prompt, unless it's the
-    # first prompt in the process.
-    if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
-        NEW_LINE_BEFORE_PROMPT=1
-    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
-        echo ""
-    fi
+# Add a blank line between prompts without replacing other precmd hooks.
+autoload -Uz add-zsh-hook
+dotfiles_prompt_spacing() {
+  if (( ${+DOTFILES_PROMPT_SHOWN} )); then
+    print
+  else
+    typeset -g DOTFILES_PROMPT_SHOWN=1
+  fi
 }
+add-zsh-hook precmd dotfiles_prompt_spacing
 
-# Simple username
+# Show only the username, using readable text on Agnoster's black segment.
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+    prompt_segment black white "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
 
-# Simple walltime command
 walltime() {
-    if [ -z "$1" ]; then
-        echo "Usage: walltime [PID]"
-        return 1
-    fi
-    ps -p $1 -o etime
+  if [[ -z $1 ]]; then
+    echo "Usage: walltime [PID]"
+    return 1
+  fi
+  ps -p "$1" -o etime
 }
 
 # CUDA_VISIBLE_DEVICES aliases
@@ -61,15 +70,13 @@ alias CVD5='CUDA_VISIBLE_DEVICES=5'
 alias CVD6='CUDA_VISIBLE_DEVICES=6'
 alias CVD7='CUDA_VISIBLE_DEVICES=7'
 
-# boj commands
 boj() {
-  if [[ "$1" == "run" && "$2" =~ ^[0-9]+$ ]]; then
-    g++ -std=c++17 "$2.cpp" -o a.out
-    if [[ $? -eq 0 ]]; then
+  if [[ $1 == "run" && $2 =~ ^[0-9]+$ ]]; then
+    g++ -std=c++17 "$2.cpp" -o a.out && {
       echo "Compile OK"
       ./a.out
-    fi
-  elif [[ "$1" == "create" && "$2" =~ ^[0-9]+$ ]]; then
+    }
+  elif [[ $1 == "create" && $2 =~ ^[0-9]+$ ]]; then
     cp template.cpp "$2.cpp"
     echo "Created $2.cpp"
   else
@@ -77,16 +84,14 @@ boj() {
   fi
 }
 
-
-# pwnvm related command
 pwnvm() {
   if [[ $1 == "copy" ]]; then
-    local tmpdir="pwn_$(date +%Y%m%d_%H%M%S)"  # Create a unique temporary directory name
-    local remote_dir="~/ctf/$tmpdir"            # Remote directory path
+    local tmpdir="pwn_$(date +%Y%m%d_%H%M%S)"
+    local remote_dir="~/ctf/$tmpdir"
 
     if [[ -n $2 ]]; then
-      scp -r $2 k0nen@pwnvm:"$remote_dir"
-      echo $remote_dir | clipboard
+      scp -r "$2" k0nen@pwnvm:"$remote_dir"
+      print -r -- "$remote_dir" | clipboard
     else
       echo "Usage: pwnvm copy [path]"
     fi
@@ -97,8 +102,7 @@ pwnvm() {
   fi
 }
 
-pwnconvert () {
-  # Set the input variable to $3 if it exists, otherwise default to "s"
+pwnconvert() {
   local input_var="${2:-s}"
 
   if [[ $1 == "char2char" ]]; then
@@ -140,10 +144,27 @@ pwnconvert () {
 
 if [[ $(hostname) == "pwnvm" ]]; then
   pwnhost() {
-    socat TCP-LISTEN:9999,bind=192.168.64.2,reuseaddr,fork EXEC:$1,stderr
+    socat TCP-LISTEN:9999,bind=192.168.64.2,reuseaddr,fork EXEC:"$1",stderr
   }
 fi
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
 
+if (( $+commands[thefuck] )); then
+  eval "$(thefuck --alias)"
+fi
+
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [[ -n ${HOMEBREW_PREFIX:-} && -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ]]; then
+  source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+  [[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ]] &&
+    source "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+elif [[ -s "$NVM_DIR/nvm.sh" ]]; then
+  source "$NVM_DIR/nvm.sh"
+  [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+fi
+
+# Machine-specific interactive settings and secrets belong here, outside Git.
+[[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
